@@ -3,12 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\user\\source\\repos\\ToDo\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D9F9CC7F-2BEA-4D2A-AF35-D13F6B5F33DF}|ToDo.csproj|c:\\users\\user\\source\\repos\\todo\\managerclasses\\taskmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D9F9CC7F-2BEA-4D2A-AF35-D13F6B5F33DF}|ToDo.csproj|solutionrelative:managerclasses\\taskmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D9F9CC7F-2BEA-4D2A-AF35-D13F6B5F33DF}|ToDo.csproj|c:\\users\\user\\source\\repos\\todo\\taskclass\\task.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D9F9CC7F-2BEA-4D2A-AF35-D13F6B5F33DF}|ToDo.csproj|solutionrelative:taskclass\\task.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D9F9CC7F-2BEA-4D2A-AF35-D13F6B5F33DF}|ToDo.csproj|C:\\Users\\user\\source\\repos\\ToDo\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{D9F9CC7F-2BEA-4D2A-AF35-D13F6B5F33DF}|ToDo.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D9F9CC7F-2BEA-4D2A-AF35-D13F6B5F33DF}|ToDo.csproj|c:\\users\\user\\source\\repos\\todo\\taskclass\\priority.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -19,12 +15,20 @@
       "RelativeMoniker": "D:0:0:{D9F9CC7F-2BEA-4D2A-AF35-D13F6B5F33DF}|ToDo.csproj|solutionrelative:managerclasses\\sortmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{D9F9CC7F-2BEA-4D2A-AF35-D13F6B5F33DF}|ToDo.csproj|c:\\users\\user\\source\\repos\\todo\\managerclasses\\taskmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D9F9CC7F-2BEA-4D2A-AF35-D13F6B5F33DF}|ToDo.csproj|solutionrelative:managerclasses\\taskmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{D9F9CC7F-2BEA-4D2A-AF35-D13F6B5F33DF}|ToDo.csproj|c:\\users\\user\\source\\repos\\todo\\taskclass\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D9F9CC7F-2BEA-4D2A-AF35-D13F6B5F33DF}|ToDo.csproj|solutionrelative:taskclass\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D9F9CC7F-2BEA-4D2A-AF35-D13F6B5F33DF}|ToDo.csproj|C:\\Users\\user\\source\\repos\\ToDo\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{D9F9CC7F-2BEA-4D2A-AF35-D13F6B5F33DF}|ToDo.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{D9F9CC7F-2BEA-4D2A-AF35-D13F6B5F33DF}|ToDo.csproj|c:\\users\\user\\source\\repos\\todo\\taskclass\\task.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D9F9CC7F-2BEA-4D2A-AF35-D13F6B5F33DF}|ToDo.csproj|solutionrelative:taskclass\\task.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9F9CC7F-2BEA-4D2A-AF35-D13F6B5F33DF}|ToDo.csproj|c:\\users\\user\\source\\repos\\todo\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D9F9CC7F-2BEA-4D2A-AF35-D13F6B5F33DF}|ToDo.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D9F9CC7F-2BEA-4D2A-AF35-D13F6B5F33DF}|ToDo.csproj|c:\\users\\user\\source\\repos\\todo\\todo.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
@@ -38,37 +42,54 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 8,
           "Children": [
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{56df62a4-05a3-4e5b-aa1a-99371ccfb997}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "TaskManager.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\ToDo\\ManagerClasses\\TaskManager.cs",
               "RelativeDocumentMoniker": "ManagerClasses\\TaskManager.cs",
               "ToolTip": "C:\\Users\\user\\source\\repos\\ToDo\\ManagerClasses\\TaskManager.cs",
               "RelativeToolTip": "ManagerClasses\\TaskManager.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAoAAAAqAAAAAAAAAA==",
+              "ViewState": "AgIAACgAAAAAAAAAAAAcwD8AAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-25T13:05:26.397Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "SortManager.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\ToDo\\ManagerClasses\\SortManager.cs",
               "RelativeDocumentMoniker": "ManagerClasses\\SortManager.cs",
               "ToolTip": "C:\\Users\\user\\source\\repos\\ToDo\\ManagerClasses\\SortManager.cs",
               "RelativeToolTip": "ManagerClasses\\SortManager.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAABMAAAAAAAAAAAA7wCwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-25T12:07:06.352Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\ToDo\\Form1.cs",
+              "RelativeDocumentMoniker": "Form1.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\ToDo\\Form1.cs",
+              "RelativeToolTip": "Form1.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAIA1wBAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-25T22:52:44.096Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "Priority.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\ToDo\\TaskClass\\Priority.cs",
               "RelativeDocumentMoniker": "TaskClass\\Priority.cs",
@@ -81,13 +102,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "Task.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\ToDo\\TaskClass\\Task.cs",
               "RelativeDocumentMoniker": "TaskClass\\Task.cs",
               "ToolTip": "C:\\Users\\user\\source\\repos\\ToDo\\TaskClass\\Task.cs",
               "RelativeToolTip": "TaskClass\\Task.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFcAAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAAFAAAAAAAAAAAAAuwGoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-25T11:05:46.732Z",
               "EditorCaption": ""
@@ -100,14 +121,14 @@
               "RelativeDocumentMoniker": "TaskClass\\Category.cs",
               "ToolTip": "C:\\Users\\user\\source\\repos\\ToDo\\TaskClass\\Category.cs",
               "RelativeToolTip": "TaskClass\\Category.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAgwB0AAAAuAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAB0AAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-25T11:08:40.076Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "ToDo.csproj",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\ToDo\\ToDo.csproj",
               "RelativeDocumentMoniker": "ToDo.csproj",
@@ -119,14 +140,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 0,
               "Title": "Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\ToDo\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",
               "ToolTip": "C:\\Users\\user\\source\\repos\\ToDo\\Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "RelativeToolTip": "Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-25T10:56:25.729Z"
+              "WhenOpened": "2025-09-25T10:56:25.729Z",
+              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
             }
           ]
         }
