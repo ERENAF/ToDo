@@ -27,7 +27,8 @@ namespace ToDo.TaskClass
                 Category.Private_Life => Color.Red,
                 Category.Education => Color.Green,
                 Category.Other => Color.Orange,
-                Category.None => Color.Yellow
+                Category.None => Color.Yellow,
+                _ => Color.White
             };
         }
     }

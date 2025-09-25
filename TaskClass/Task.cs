@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ToDo.TaskClass
 {
-    internal class Task
+    public class Task
     {
         private string _title;
         private string _description;
@@ -23,21 +23,26 @@ namespace ToDo.TaskClass
         public Task (string title, string describtion, Priority priority,
                      Category category, DateTime deadline)
         {
-            Id = Guid.NewGuid (); 
+            Id = Guid.NewGuid(); 
             Title = title;
             Description = describtion;
             Priority = priority;
             Category = category;
+            isCompleted = false;
             createdate = DateTime.Now;
             DeadLine = deadline;
             _subtasks = new List<Task> ();
         }
 
-        public Guid Id {  get; set; }
+        public Guid Id {  get; private set; }
         public string Title { 
             get=>_title;
             set
-            {
+            {   
+                if (value == null)
+                {
+                    throw new InvalidOperationException("title is missing");
+                }
                 _title = value;
             } 
         }
@@ -46,6 +51,10 @@ namespace ToDo.TaskClass
             get => _description;
             set
             {
+                if (value == null)
+                {
+                    throw new InvalidOperationException("describtion is missing");
+                }
                 _description = value;
             }
         }
@@ -55,7 +64,7 @@ namespace ToDo.TaskClass
             get => _deadline;
             set
             {
-                if (value < createdate)
+                if (value < createdate.Date)
                 {
                     _deadline = createdate;
                 }

@@ -9,7 +9,7 @@ namespace ToDo.TaskClass
     public enum Priority
     {
         Low, 
-        High,
-        Medium
+        Medium,
+        High
     }
 }
