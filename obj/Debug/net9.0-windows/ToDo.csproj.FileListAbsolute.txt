@@ -1,0 +1,17 @@
+C:\Users\user\source\repos\ToDo\obj\Debug\net9.0-windows\ToDo.Form1.resources
+C:\Users\user\source\repos\ToDo\obj\Debug\net9.0-windows\ToDo.csproj.GenerateResource.cache
+C:\Users\user\source\repos\ToDo\obj\Debug\net9.0-windows\ToDo.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\source\repos\ToDo\obj\Debug\net9.0-windows\ToDo.AssemblyInfoInputs.cache
+C:\Users\user\source\repos\ToDo\obj\Debug\net9.0-windows\ToDo.AssemblyInfo.cs
+C:\Users\user\source\repos\ToDo\obj\Debug\net9.0-windows\ToDo.csproj.CoreCompileInputs.cache
+C:\Users\user\source\repos\ToDo\obj\Debug\net9.0-windows\ToDo.sourcelink.json
+C:\Users\user\source\repos\ToDo\bin\Debug\net9.0-windows\ToDo.exe
+C:\Users\user\source\repos\ToDo\bin\Debug\net9.0-windows\ToDo.deps.json
+C:\Users\user\source\repos\ToDo\bin\Debug\net9.0-windows\ToDo.runtimeconfig.json
+C:\Users\user\source\repos\ToDo\bin\Debug\net9.0-windows\ToDo.dll
+C:\Users\user\source\repos\ToDo\bin\Debug\net9.0-windows\ToDo.pdb
+C:\Users\user\source\repos\ToDo\obj\Debug\net9.0-windows\ToDo.dll
+C:\Users\user\source\repos\ToDo\obj\Debug\net9.0-windows\refint\ToDo.dll
+C:\Users\user\source\repos\ToDo\obj\Debug\net9.0-windows\ToDo.pdb
+C:\Users\user\source\repos\ToDo\obj\Debug\net9.0-windows\ToDo.genruntimeconfig.cache
+C:\Users\user\source\repos\ToDo\obj\Debug\net9.0-windows\ref\ToDo.dll

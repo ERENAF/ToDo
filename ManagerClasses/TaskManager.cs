@@ -9,10 +9,12 @@ namespace ToDo.ManagerClasses
     public class TaskManager
     {
         private List<ToDo.TaskClass.Task> tasks;
+        private List<Action> observers;
 
         public TaskManager()
         {
             tasks = new List<ToDo.TaskClass.Task>();
+            observers = new List<Action>();
         }
 
         public List<ToDo.TaskClass.Task> Tasks => tasks;
@@ -23,12 +25,17 @@ namespace ToDo.ManagerClasses
                 throw new ArgumentException(nameof(task));
             }
             tasks.Add(task);
+            NotifyObservers();
         }
 
         public bool RemoveTask(Guid id)
         {
             ToDo.TaskClass.Task task = tasks.FirstOrDefault(t => t.Id == id);
-            return task != null && tasks.Remove(task);
+            if (task != null && tasks.Remove(task) ){
+                NotifyObservers();
+                return true;
+            }
+            return false; 
         }
 
         public bool EditTask(Guid taskId, string title, Priority priority, Category category, DateTime deadline)
@@ -42,6 +49,9 @@ namespace ToDo.ManagerClasses
                     task.Priority = priority;
                     task.Category = category;
                     task.DeadLine = deadline;
+
+                    NotifyObservers();
+
                     return true;
                 }
                 catch (Exception)
@@ -63,9 +73,19 @@ namespace ToDo.ManagerClasses
                 {
                     subtask.isCompleted = task.isCompleted;
                 }
+
+                NotifyObservers();
+
                 return true;
             }
             return false;
         }
+
+
+
+        public void Subscribe(Action observer) => observers.Add(observer);
+        public void Unsubscribe(Action observer) => observers.Remove(observer);
+        private void NotifyObservers() => observers.ForEach(observer => observer?.Invoke());
     }
+    
 }

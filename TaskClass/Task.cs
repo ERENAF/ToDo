@@ -11,8 +11,6 @@ namespace ToDo.TaskClass
     {
         private string _title;
         private string _description;
-        public Priority Priority;
-        public Category Category;
         public bool isCompleted;
         private DateTime _deadline;
         private DateTime createdate;
@@ -28,13 +26,13 @@ namespace ToDo.TaskClass
             Description = describtion;
             Priority = priority;
             Category = category;
-            isCompleted = false;
-            createdate = DateTime.Now;
+            IsCompleted = false;
+            CreateDate = DateTime.Now;
             DeadLine = deadline;
             _subtasks = new List<Task> ();
         }
 
-        public Guid Id {  get; private set; }
+        public Guid Id {  get; set; }
         public string Title { 
             get=>_title;
             set
@@ -58,7 +56,10 @@ namespace ToDo.TaskClass
                 _description = value;
             }
         }
+        public Priority Priority { get; set; }
+        public Category Category { get; set; }
 
+        public bool IsCompleted { get; set; }
         public DateTime DeadLine
         {
             get => _deadline;
@@ -74,6 +75,9 @@ namespace ToDo.TaskClass
                 }
             }
         }
+        public DateTime CreateDate { get; set; }
+
+        public List<Task> Subtasks => _subtasks;
 
 
         public void AddSubtask( Task subtask)
