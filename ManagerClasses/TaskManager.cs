@@ -10,6 +10,8 @@ namespace ToDo.ManagerClasses
     {
         private List<ToDo.TaskClass.Task> tasks;
         private List<Action> observers;
+        private SortManager sortManager;
+
 
         public TaskManager()
         {
@@ -82,7 +84,49 @@ namespace ToDo.ManagerClasses
         }
 
 
+        // Методы сортировки через SortManager
+        public IEnumerable<ToDo.TaskClass.Task> SortByTitle() =>
+            sortManager.Sort(tasks, SortCategory.Title);
 
+        public IEnumerable<ToDo.TaskClass.Task> SortByPriority() =>
+            sortManager.Sort(tasks, SortCategory.Priority);
+
+        public IEnumerable<ToDo.TaskClass.Task> SortByCategory() =>
+            sortManager.Sort(tasks, SortCategory.Category);
+
+        public IEnumerable<ToDo.TaskClass.Task> SortByDeadline() =>
+            sortManager.Sort(tasks, SortCategory.DateOfDeadLine);
+
+        public IEnumerable<ToDo.TaskClass.Task> SortByCompletion() =>
+            sortManager.Sort(tasks, SortCategory.Completion);
+
+        // Универсальный метод сортировки
+        public IEnumerable<ToDo.TaskClass.Task> Sort(SortCategory sortCategory) =>
+            sortManager.Sort(tasks, sortCategory);
+
+        // Методы фильтрации
+        public IEnumerable<ToDo.TaskClass.Task> FilterByCategory(Category category) =>
+            tasks.Where(t => t.Category == category);
+
+        public IEnumerable<ToDo.TaskClass.Task> GetDueSoonTasks(int daysThreshold = 3) =>
+            tasks.Where(t => !t.IsCompleted && t.DeadLine >= DateTime.Today && t.DeadLine <= DateTime.Today.AddDays(daysThreshold));
+
+        public IEnumerable<ToDo.TaskClass.Task> GetCompletedTasks() =>
+            tasks.Where(t => t.IsCompleted);
+        
+        public IEnumerable<ToDo.TaskClass.Task> GetPendingTasks() =>
+            tasks.Where(t => !t.IsCompleted);
+
+        public IEnumerable<ToDo.TaskClass.Task> SearchTasks(string searchText)
+        {
+            if (string.IsNullOrWhiteSpace(searchText))
+                return tasks;
+
+            return tasks.Where(t =>
+                t.Title.Contains(searchText, StringComparison.OrdinalIgnoreCase) ||
+                t.Description.Contains(searchText, StringComparison.OrdinalIgnoreCase));
+        }
+        // Наблюдатель
         public void Subscribe(Action observer) => observers.Add(observer);
         public void Unsubscribe(Action observer) => observers.Remove(observer);
         private void NotifyObservers() => observers.ForEach(observer => observer?.Invoke());
