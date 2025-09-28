@@ -33,7 +33,7 @@ namespace ToDo.ManagerClasses
                     return SortByDateOfDeadline(tasks);
                 case SortCategory.Completion:
                     return SortByCompletion(tasks);
-                default: return SortByTitle(tasks);
+                default: return tasks;
 
             }
         }

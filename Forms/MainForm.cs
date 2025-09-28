@@ -13,6 +13,7 @@ namespace ToDo.Forms
         private readonly TaskManager _taskManager;
         private readonly FileManager _fileService;
         private readonly NotifyIcon _notifyIcon;
+        private readonly SortManager _sortManager;
 
         // Элементы управления
         private ListView lvTasks;
@@ -29,8 +30,7 @@ namespace ToDo.Forms
         private ComboBox cmbFilterCategory;
         private ComboBox cmbSortType;
         private Button btnApplySort;
-        private TextBox txtSearch;
-        private Button btnSearch;
+        private CheckBox chbIsCompleted;
 
         public MainForm()
         {
@@ -38,6 +38,7 @@ namespace ToDo.Forms
 
             _taskManager = new TaskManager();
             _fileService = new FileManager();
+            _sortManager = new SortManager();
 
             // Настройка уведомлений
             _notifyIcon = new NotifyIcon
@@ -139,21 +140,6 @@ namespace ToDo.Forms
                 MinDate = DateTime.Today
             };
 
-            // Поиск
-            txtSearch = new TextBox
-            {
-                Location = new Point(12, 60),
-                Size = new Size(200, 20),
-                PlaceholderText = "Поиск по названию и описанию"
-            };
-
-            btnSearch = new Button
-            {
-                Location = new Point(218, 58),
-                Size = new Size(80, 23),
-                Text = "Поиск"
-            };
-
             // Кнопки управления задачами
             btnAddTask = new Button
             {
@@ -171,8 +157,8 @@ namespace ToDo.Forms
 
             btnAddSubtask = new Button
             {
-                Location = new Point(304, 58),
-                Size = new Size(110, 23),
+                Location = new Point(254, 58),
+                Size = new Size(160, 23),
                 Text = "Добавить подзадачу"
             };
 
@@ -188,6 +174,12 @@ namespace ToDo.Forms
                 Location = new Point(526, 58),
                 Size = new Size(120, 23),
                 Text = "Отметить выполненной"
+            };
+
+            chbIsCompleted = new CheckBox
+            {
+                Location = new Point(92, 40),
+                Size = new Size(50,50)
             };
 
             // Фильтрация и сортировка
@@ -220,7 +212,7 @@ namespace ToDo.Forms
                 new Label { Location = new Point(424, 9), Text = "Приоритет:", AutoSize = true },
                 new Label { Location = new Point(530, 9), Text = "Категория:", AutoSize = true },
                 new Label { Location = new Point(636, 9), Text = "Срок:", AutoSize = true },
-                new Label { Location = new Point(12, 44), Text = "Поиск:", AutoSize = true },
+                new Label { Location = new Point(12, 54), Text = "Выполнение:", AutoSize = true },
                 new Label { Location = new Point(652, 44), Text = "Фильтр:", AutoSize = true },
                 new Label { Location = new Point(758, 44), Text = "Сортировка:", AutoSize = true }
             };
@@ -232,8 +224,6 @@ namespace ToDo.Forms
             Controls.Add(cmbPriority);
             Controls.Add(cmbCategory);
             Controls.Add(dtpDeadline);
-            Controls.Add(txtSearch);
-            Controls.Add(btnSearch);
             Controls.Add(btnAddTask);
             Controls.Add(btnEditTask);
             Controls.Add(btnAddSubtask);
@@ -243,6 +233,7 @@ namespace ToDo.Forms
             Controls.Add(cmbSortType);
             Controls.Add(btnApplySort);
             Controls.AddRange(labels);
+            Controls.Add(chbIsCompleted);
         }
 
         private void SetupLayout()
@@ -254,7 +245,6 @@ namespace ToDo.Forms
             btnDeleteTask.Click += btnDeleteTask_Click;
             btnToggleComplete.Click += btnToggleComplete_Click;
             btnApplySort.Click += btnApplySort_Click;
-            btnSearch.Click += btnSearch_Click;
             cmbFilterCategory.SelectedIndexChanged += cmbFilterCategory_SelectedIndexChanged;
 
             // Двойной клик для редактирования
@@ -387,8 +377,10 @@ namespace ToDo.Forms
                     describtion: txtDescription.Text.Trim(),
                     priority: (Priority)cmbPriority.SelectedItem,
                     category: (Category)cmbCategory.SelectedItem,
-                    deadline: dtpDeadline.Value
-                );
+                    deadline: dtpDeadline.Value)
+                {
+                    IsCompleted = chbIsCompleted.Checked // Устанавливаем статус выполнения
+                };
 
                 _taskManager.AddTask(task);
                 ClearInputs();
@@ -422,7 +414,7 @@ namespace ToDo.Forms
                     cmbPriority.SelectedItem = task.Priority;
                     cmbCategory.SelectedItem = task.Category;
                     dtpDeadline.Value = task.DeadLine;
-
+                    chbIsCompleted.Checked = task.IsCompleted;
                     // Удаляем старую задачу и создаем новую с обновленными данными
                     _taskManager.RemoveTask(taskId);
                 }
@@ -528,21 +520,8 @@ namespace ToDo.Forms
                 _ => SortCategory.Title
             };
 
-            var sortedTasks = _taskManager.Sort(sortCategory);
+            var sortedTasks = _sortManager.Sort(_taskManager.Tasks,sortCategory);
             DisplayTasks(sortedTasks);
-        }
-
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(txtSearch.Text))
-            {
-                RefreshTaskList();
-            }
-            else
-            {
-                var searchResults = _taskManager.SearchTasks(txtSearch.Text);
-                DisplayTasks(searchResults);
-            }
         }
 
         private void cmbFilterCategory_SelectedIndexChanged(object sender, EventArgs e)
@@ -557,6 +536,7 @@ namespace ToDo.Forms
             cmbPriority.SelectedIndex = 0;
             cmbCategory.SelectedIndex = 0;
             dtpDeadline.Value = DateTime.Today.AddDays(1);
+            chbIsCompleted.Checked = false;
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
