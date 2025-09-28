@@ -62,5 +62,10 @@ namespace ToDo.ManagerClasses
         {
             return tasks.OrderBy(t => t.isCompleted);
         }
+
+        public IEnumerable<ToDo.TaskClass.Task> GetDueSoonTasks(IEnumerable<ToDo.TaskClass.Task> tasks, int daysThreshold = 3)
+        {
+            return tasks.Where(t => !t.IsCompleted && t.DeadLine >= DateTime.Today && t.DeadLine <= DateTime.Today.AddDays(daysThreshold));
+        }
     }
 }

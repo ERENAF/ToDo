@@ -259,7 +259,7 @@ namespace ToDo.Forms
 
             // Фильтр категорий
             cmbFilterCategory.Items.Add("Все категории");
-            cmbFilterCategory.Items.AddRange(Enum.GetNames(typeof(Category)));
+            cmbFilterCategory.Items.AddRange(Enum.GetNames(typeof(SortCategory)));
             cmbFilterCategory.SelectedIndex = 0;
 
             // Типы сортировки
@@ -310,8 +310,8 @@ namespace ToDo.Forms
             // Применяем фильтр
             if (cmbFilterCategory.SelectedIndex > 0)
             {
-                var selectedCategory = (Category)(cmbFilterCategory.SelectedIndex - 1);
-                tasks = _taskManager.FilterByCategory(selectedCategory);
+                var selectedCategory = (SortCategory)(cmbFilterCategory.SelectedIndex - 1);
+                tasks = _sortManager.Sort(tasks, selectedCategory);
             }
 
             DisplayTasks(tasks);
@@ -352,7 +352,7 @@ namespace ToDo.Forms
 
         private void CheckDueTasks()
         {
-            var dueSoonTasks = _taskManager.GetDueSoonTasks();
+            var dueSoonTasks = _sortManager.GetDueSoonTasks(_taskManager.Tasks);
             foreach (var task in dueSoonTasks)
             {
                 _notifyIcon.BalloonTipText = $"Задача '{task.Title}' должна быть выполнена до {task.DeadLine:dd.MM.yyyy}";
