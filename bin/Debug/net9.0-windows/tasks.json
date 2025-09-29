@@ -1,24 +1,24 @@
 [
   {
-    "Id": "23974d38-7d7b-40fa-ab4f-a4777eb58af8",
-    "Title": "da",
-    "Description": "asadaf",
-    "Priority": 2,
-    "Category": 1,
-    "DeadLine": "2025-09-30T00:00:00",
-    "IsCompleted": false,
-    "CreationDate": "2025-09-28T21:26:46.1712874+10:00",
+    "Id": "1d1e3c2e-883e-4a7d-9cfb-197512288316",
+    "Title": "\u0438\u043C\u044F",
+    "Description": "\u043E\u043F\u0438\u0441\u0430\u043D\u0438\u0435",
+    "Priority": 0,
+    "Category": 2,
+    "DeadLine": "2025-10-02T00:00:00",
+    "IsCompleted": true,
+    "CreationDate": "2025-09-29T17:49:44.4022505+10:00",
     "SubTasks": []
   },
   {
-    "Id": "c1cb4aee-b667-4114-9dfa-32b019c49301",
-    "Title": "a",
-    "Description": "da",
+    "Id": "8f436997-c151-4f54-ab43-f40e265956a5",
+    "Title": "\u044F\u043C\u0430",
+    "Description": "\u0444",
     "Priority": 0,
-    "Category": 2,
-    "DeadLine": "2025-10-05T00:00:00",
-    "IsCompleted": true,
-    "CreationDate": "2025-09-28T21:27:51.4513658+10:00",
+    "Category": 0,
+    "DeadLine": "2025-09-30T00:00:00+10:00",
+    "IsCompleted": false,
+    "CreationDate": "2025-09-29T18:08:26.7009857+10:00",
     "SubTasks": []
   }
 ]

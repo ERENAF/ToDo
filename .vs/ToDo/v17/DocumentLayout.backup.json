@@ -86,9 +86,9 @@
               "Title": "MainForm.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\ToDo\\Forms\\MainForm.cs",
               "RelativeDocumentMoniker": "Forms\\MainForm.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\ToDo\\Forms\\MainForm.cs",
-              "RelativeToolTip": "Forms\\MainForm.cs",
-              "ViewState": "AgIAAEkBAAAAAAAAAAAswGkBAAAAAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\ToDo\\Forms\\MainForm.cs*",
+              "RelativeToolTip": "Forms\\MainForm.cs*",
+              "ViewState": "AgIAAIwAAAAAAAAAAAAEwKwAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-26T01:06:06.87Z",
               "EditorCaption": ""
@@ -103,8 +103,7 @@
               "RelativeToolTip": "ManagerClasses\\FileManager.cs",
               "ViewState": "AgIAADAAAAAAAAAAAADgvzIAAABUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-26T00:19:40.843Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-26T00:19:40.843Z"
             },
             {
               "$type": "Document",
@@ -116,8 +115,7 @@
               "RelativeToolTip": "ManagerClasses\\SortManager.cs",
               "ViewState": "AgIAACsAAAAAAAAAAAAuwEcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-25T12:07:06.352Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-25T12:07:06.352Z"
             },
             {
               "$type": "Document",
@@ -129,8 +127,7 @@
               "RelativeToolTip": "ManagerClasses\\TaskManager.cs",
               "ViewState": "AgIAAEIAAAAAAAAAAAAAAFUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-25T13:05:26.397Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-25T13:05:26.397Z"
             },
             {
               "$type": "Document",
@@ -166,8 +163,7 @@
               "RelativeToolTip": "ToDo.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-09-25T12:00:05.372Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-25T12:00:05.372Z"
             },
             {
               "$type": "Document",
@@ -190,8 +186,7 @@
               "ToolTip": "C:\\Users\\user\\source\\repos\\ToDo\\Forms\\MainForm.cs [Design]",
               "RelativeToolTip": "Forms\\MainForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-26T01:05:59.803Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-09-26T01:05:59.803Z"
             }
           ]
         }

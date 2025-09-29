@@ -24,13 +24,11 @@ namespace ToDo.Forms
         private DateTimePicker dtpDeadline;
         private Button btnAddTask;
         private Button btnDeleteTask;
-        private Button btnToggleComplete;
+        private CheckBox chbIsCompleted;
         private Button btnAddSubtask;
         private Button btnEditTask;
-        private ComboBox cmbFilterCategory;
         private ComboBox cmbSortType;
         private Button btnApplySort;
-        private CheckBox chbIsCompleted;
 
         public MainForm()
         {
@@ -143,64 +141,49 @@ namespace ToDo.Forms
             // Кнопки управления задачами
             btnAddTask = new Button
             {
-                Location = new Point(762, 23),
-                Size = new Size(100, 23),
+                Location = new Point(9, 58),
+                Size = new Size(150, 23),
                 Text = "Добавить задачу"
             };
 
             btnEditTask = new Button
             {
-                Location = new Point(868, 23),
+                Location = new Point(420, 58),
                 Size = new Size(100, 23),
                 Text = "Редактировать"
             };
 
             btnAddSubtask = new Button
             {
-                Location = new Point(254, 58),
+                Location = new Point(160, 58),
                 Size = new Size(160, 23),
                 Text = "Добавить подзадачу"
             };
 
             btnDeleteTask = new Button
             {
-                Location = new Point(420, 58),
+                Location = new Point(320, 58),
                 Size = new Size(100, 23),
                 Text = "Удалить задачу"
             };
 
-            btnToggleComplete = new Button
-            {
-                Location = new Point(526, 58),
-                Size = new Size(120, 23),
-                Text = "Отметить выполненной"
-            };
-
             chbIsCompleted = new CheckBox
             {
-                Location = new Point(92, 40),
+                Location = new Point(778, 10),
                 Size = new Size(50,50)
-            };
-
-            // Фильтрация и сортировка
-            cmbFilterCategory = new ComboBox
-            {
-                Location = new Point(652, 60),
-                Size = new Size(100, 21),
-                DropDownStyle = ComboBoxStyle.DropDownList
             };
 
             cmbSortType = new ComboBox
             {
-                Location = new Point(758, 60),
+                Location = new Point(600, 60),
                 Size = new Size(120, 21),
                 DropDownStyle = ComboBoxStyle.DropDownList
             };
 
             btnApplySort = new Button
             {
-                Location = new Point(884, 58),
-                Size = new Size(80, 23),
+                Location = new Point(720, 58),
+                Size = new Size(95, 28),
                 Text = "Сортировать"
             };
 
@@ -212,9 +195,8 @@ namespace ToDo.Forms
                 new Label { Location = new Point(424, 9), Text = "Приоритет:", AutoSize = true },
                 new Label { Location = new Point(530, 9), Text = "Категория:", AutoSize = true },
                 new Label { Location = new Point(636, 9), Text = "Срок:", AutoSize = true },
-                new Label { Location = new Point(12, 54), Text = "Выполнение:", AutoSize = true },
-                new Label { Location = new Point(652, 44), Text = "Фильтр:", AutoSize = true },
-                new Label { Location = new Point(758, 44), Text = "Сортировка:", AutoSize = true }
+                new Label { Location = new Point(758, 9), Text = "Выполнение:", AutoSize = true },
+                new Label { Location = new Point(525, 62), Text = "Сортировка:", AutoSize = true }
             };
 
             // Добавление элементов на форму
@@ -228,8 +210,6 @@ namespace ToDo.Forms
             Controls.Add(btnEditTask);
             Controls.Add(btnAddSubtask);
             Controls.Add(btnDeleteTask);
-            Controls.Add(btnToggleComplete);
-            Controls.Add(cmbFilterCategory);
             Controls.Add(cmbSortType);
             Controls.Add(btnApplySort);
             Controls.AddRange(labels);
@@ -243,9 +223,8 @@ namespace ToDo.Forms
             btnEditTask.Click += btnEditTask_Click;
             btnAddSubtask.Click += btnAddSubtask_Click;
             btnDeleteTask.Click += btnDeleteTask_Click;
-            btnToggleComplete.Click += btnToggleComplete_Click;
+
             btnApplySort.Click += btnApplySort_Click;
-            cmbFilterCategory.SelectedIndexChanged += cmbFilterCategory_SelectedIndexChanged;
 
             // Двойной клик для редактирования
             lvTasks.DoubleClick += lvTasks_DoubleClick;
@@ -257,10 +236,6 @@ namespace ToDo.Forms
             cmbPriority.DataSource = Enum.GetValues(typeof(Priority));
             cmbCategory.DataSource = Enum.GetValues(typeof(Category));
 
-            // Фильтр категорий
-            cmbFilterCategory.Items.Add("Все категории");
-            cmbFilterCategory.Items.AddRange(Enum.GetNames(typeof(SortCategory)));
-            cmbFilterCategory.SelectedIndex = 0;
 
             // Типы сортировки
             cmbSortType.Items.Add("По названию");
@@ -307,10 +282,9 @@ namespace ToDo.Forms
 
             IEnumerable<ToDo.TaskClass.Task> tasks = _taskManager.Tasks;
 
-            // Применяем фильтр
-            if (cmbFilterCategory.SelectedIndex > 0)
+            if (cmbSortType.SelectedIndex > 0)
             {
-                var selectedCategory = (SortCategory)(cmbFilterCategory.SelectedIndex - 1);
+                var selectedCategory = (SortCategory)(cmbSortType.SelectedIndex - 1);
                 tasks = _sortManager.Sort(tasks, selectedCategory);
             }
 
@@ -379,7 +353,7 @@ namespace ToDo.Forms
                     category: (Category)cmbCategory.SelectedItem,
                     deadline: dtpDeadline.Value)
                 {
-                    IsCompleted = chbIsCompleted.Checked // Устанавливаем статус выполнения
+                    IsCompleted = chbIsCompleted.Checked
                 };
 
                 _taskManager.AddTask(task);
@@ -415,6 +389,7 @@ namespace ToDo.Forms
                     cmbCategory.SelectedItem = task.Category;
                     dtpDeadline.Value = task.DeadLine;
                     chbIsCompleted.Checked = task.IsCompleted;
+                    _taskManager.SubTaskCompletion(task.Id);
                     // Удаляем старую задачу и создаем новую с обновленными данными
                     _taskManager.RemoveTask(taskId);
                 }
@@ -490,20 +465,6 @@ namespace ToDo.Forms
             else
             {
                 MessageBox.Show("Выберите задачу для удаления", "Информация",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-
-        private void btnToggleComplete_Click(object sender, EventArgs e)
-        {
-            if (lvTasks.SelectedItems.Count > 0)
-            {
-                var taskId = (Guid)lvTasks.SelectedItems[0].Tag;
-                _taskManager.SubTaskCompletion(taskId);
-            }
-            else
-            {
-                MessageBox.Show("Выберите задачу для изменения статуса", "Информация",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
