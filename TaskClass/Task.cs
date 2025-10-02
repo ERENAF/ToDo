@@ -14,8 +14,7 @@ namespace ToDo.TaskClass
         public bool isCompleted;
         private DateTime _deadline;
         private DateTime createdate;
-        private List<Task> _subtasks;
-        public List<Task> SubTasks => _subtasks;
+        public List<Task> _subtasks;
 
 
         public Task (string title, string describtion, Priority priority,

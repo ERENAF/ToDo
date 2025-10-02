@@ -28,18 +28,18 @@ namespace ToDo.ManagerClasses
             public DateTime DeadLine { get; set; }
             public bool IsCompleted { get; set; }
             public DateTime CreationDate { get; set; }
-            public List<TaskData> SubTasks { get; set; } 
+            public List<TaskData> SubTasks { get; set; }
         }
 
-        public void SaveTasks (IEnumerable <ToDo.TaskClass.Task> tasks)
+        public void SaveTasks(IEnumerable<ToDo.TaskClass.Task> tasks)
         {
             try
             {
                 List<TaskData> taskDataList = ConvertToTaskData(tasks);
-                var json = JsonSerializer.Serialize (taskDataList, new JsonSerializerOptions { WriteIndented = true});
+                var json = JsonSerializer.Serialize(taskDataList, new JsonSerializerOptions { WriteIndented = true });
                 File.WriteAllText(_filePath, json);
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 throw new Exception($"Error of saving tasks: {ex.Message}", ex);
             }
@@ -89,12 +89,14 @@ namespace ToDo.ManagerClasses
                         DeadLine = subtask.DeadLine,
                         IsCompleted = subtask.IsCompleted,
                         CreationDate = subtask.CreateDate,
+                        SubTasks = (subtask.Subtasks.Count > 0) ? ConvertToTaskData(subtask.Subtasks) : new List<TaskData>()
                     });
                 }
                 result.Add(taskData);
             }
             return result;
         }
+
 
         private List<ToDo.TaskClass.Task> ConvertFromTaskData(List<TaskData> taskDataList)
         {
@@ -132,6 +134,14 @@ namespace ToDo.ManagerClasses
                             IsCompleted = subtaskData.IsCompleted,
                             CreateDate = subtaskData.CreationDate
                         };
+                        if (subtaskData.SubTasks != null)
+                        {
+                            subtask._subtasks = ConvertFromTaskData(subtaskData.SubTasks);
+                        }
+                        else
+                        {
+                            subtask._subtasks = new List<ToDo.TaskClass.Task>();
+                        }
                         task.AddSubtask(subtask);
                     }
                 }

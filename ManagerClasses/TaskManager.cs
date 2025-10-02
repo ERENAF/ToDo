@@ -73,7 +73,7 @@ namespace ToDo.ManagerClasses
             {
                 task.isCompleted = !task.isCompleted;
 
-                foreach (var subtask in task.SubTasks)
+                foreach (var subtask in task.Subtasks)
                 {
                     subtask.isCompleted = task.isCompleted;
                 }
@@ -90,7 +90,7 @@ namespace ToDo.ManagerClasses
         {
             var task = tasks.FirstOrDefault(t => t.Id==taskId);
 
-            if (task != null && stacktask.Count < 2)
+            if (task != null)
             {
                 stacktask.Push(tasks);
                 tasks = task.Subtasks;
