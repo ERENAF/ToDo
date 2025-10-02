@@ -29,6 +29,8 @@ namespace ToDo.Forms
         private Button btnEditTask;
         private ComboBox cmbSortType;
         private Button btnApplySort;
+        private Button btnlookSubTasks;
+        private Button btnbackToTasks;
 
         public MainForm()
         {
@@ -187,6 +189,20 @@ namespace ToDo.Forms
                 Text = "Сортировать"
             };
 
+            btnlookSubTasks = new Button
+            {
+                Location = new Point(12, 88),
+                Size = new Size(135, 28),
+                Text = "Смотреть подзадачи"
+            };
+
+            btnbackToTasks = new Button
+            {
+                Location = new Point(152, 88),
+                Size = new Size(136, 28),
+                Text = "Вернуться"
+            };
+
             // Метки
             var labels = new[]
             {
@@ -214,6 +230,8 @@ namespace ToDo.Forms
             Controls.Add(btnApplySort);
             Controls.AddRange(labels);
             Controls.Add(chbIsCompleted);
+            Controls.Add(btnlookSubTasks);
+            Controls.Add(btnbackToTasks);
         }
 
         private void SetupLayout()
@@ -223,11 +241,9 @@ namespace ToDo.Forms
             btnEditTask.Click += btnEditTask_Click;
             btnAddSubtask.Click += btnAddSubtask_Click;
             btnDeleteTask.Click += btnDeleteTask_Click;
-
+            btnlookSubTasks.Click += btnLookSubTasks;
+            btnbackToTasks.Click += btnBackToTasks;
             btnApplySort.Click += btnApplySort_Click;
-
-            // Двойной клик для редактирования
-            lvTasks.DoubleClick += lvTasks_DoubleClick;
         }
 
         private void InitializeControls()
@@ -267,6 +283,7 @@ namespace ToDo.Forms
         {
             try
             {
+                _taskManager.BackToFirstTask();
                 _fileService.SaveTasks(_taskManager.Tasks);
             }
             catch (Exception ex)
@@ -449,6 +466,44 @@ namespace ToDo.Forms
             }
         }
 
+        private void btnLookSubTasks (object sender, EventArgs e)
+        {
+            if (lvTasks.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Выберите задачу для просмотра подзадачи", "Информация",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            try
+            {
+                var mainTaskId = (Guid)lvTasks.SelectedItems[0].Tag;
+                _taskManager.LookSubTasks(mainTaskId);
+                RefreshTaskList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка  просмотра подзадачи: {ex.Message}", "Ошибка",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnBackToTasks(object sender, EventArgs e)
+        {
+            if (!_taskManager.BackToHeadTask())
+            {
+                MessageBox.Show("Нет задач для просмотра", "Информация",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else
+            {
+                RefreshTaskList();
+            }
+        }
+
+
+
         private void btnDeleteTask_Click(object sender, EventArgs e)
         {
             if (lvTasks.SelectedItems.Count > 0)
@@ -505,5 +560,6 @@ namespace ToDo.Forms
             SaveTasks();
             _notifyIcon.Dispose();
         }
+
     }
 }

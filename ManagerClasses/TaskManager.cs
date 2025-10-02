@@ -10,13 +10,15 @@ namespace ToDo.ManagerClasses
     {
         private List<ToDo.TaskClass.Task> tasks;
         private List<Action> observers;
-        private SortManager sortManager;
+
+        private Stack<List<ToDo.TaskClass.Task>> stacktask;
 
 
         public TaskManager()
         {
             tasks = new List<ToDo.TaskClass.Task>();
             observers = new List<Action>();
+            stacktask = new Stack<List<ToDo.TaskClass.Task>>();
         }
 
         public List<ToDo.TaskClass.Task> Tasks => tasks;
@@ -83,6 +85,44 @@ namespace ToDo.ManagerClasses
             return false;
         }
 
+
+        public bool LookSubTasks(Guid taskId)
+        {
+            var task = tasks.FirstOrDefault(t => t.Id==taskId);
+
+            if (task != null && stacktask.Count < 2)
+            {
+                stacktask.Push(tasks);
+                tasks = task.Subtasks;
+            }
+            return false;
+        }
+
+        public bool BackToHeadTask()
+        {
+            if (stacktask.Count > 0)
+            {
+                tasks = stacktask.Pop();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public bool BackToFirstTask()
+        {
+            if (stacktask.Count > 0)
+            {
+                while (stacktask.Count > 1)
+                {
+                    stacktask.Pop();
+                }
+                tasks = stacktask.Pop();
+                return true;
+            }
+            return false;
+        }
 
         // Наблюдатель
         public void Subscribe(Action observer) => observers.Add(observer);

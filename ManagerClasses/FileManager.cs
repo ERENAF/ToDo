@@ -12,6 +12,7 @@ namespace ToDo.ManagerClasses
     {
         private readonly string _filePath;
 
+
         public FileManager(string fileName = "tasks.json")
         {
             _filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
