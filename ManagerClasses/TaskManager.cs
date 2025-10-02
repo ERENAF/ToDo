@@ -94,6 +94,7 @@ namespace ToDo.ManagerClasses
             {
                 stacktask.Push(tasks);
                 tasks = task.Subtasks;
+                return true;
             }
             return false;
         }

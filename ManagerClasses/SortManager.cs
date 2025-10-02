@@ -55,7 +55,7 @@ namespace ToDo.ManagerClasses
 
         private IEnumerable<ToDo.TaskClass.Task> SortByDateOfDeadline(IEnumerable<ToDo.TaskClass.Task> tasks)
         {
-            return tasks.OrderByDescending(t => t.DeadLine);
+            return tasks.OrderBy(t => t.DeadLine);
         }
 
         private IEnumerable<ToDo.TaskClass.Task> SortByCompletion(IEnumerable<ToDo.TaskClass.Task> tasks)
