@@ -11,7 +11,7 @@ namespace ToDo.ManagerClasses
         private List<ToDo.TaskClass.Task> tasks;
         private List<Action> observers;
 
-        private Stack<List<ToDo.TaskClass.Task>> stacktask;
+        public Stack<List<ToDo.TaskClass.Task>> stacktask;
 
 
         public TaskManager()

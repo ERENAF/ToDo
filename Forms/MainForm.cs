@@ -31,6 +31,8 @@ namespace ToDo.Forms
         private Button btnApplySort;
         private Button btnlookSubTasks;
         private Button btnbackToTasks;
+        private Label lleveloftasks;
+
 
         public MainForm()
         {
@@ -215,6 +217,13 @@ namespace ToDo.Forms
                 new Label { Location = new Point(525, 62), Text = "Сортировка:", AutoSize = true }
             };
 
+            lleveloftasks = new Label
+            {
+                Location = new Point(300, 93),
+                Text = "Уровень",
+                AutoSize = true
+            };
+
             // Добавление элементов на форму
             Controls.Add(lvTasks);
             Controls.Add(txtTitle);
@@ -232,6 +241,7 @@ namespace ToDo.Forms
             Controls.Add(chbIsCompleted);
             Controls.Add(btnlookSubTasks);
             Controls.Add(btnbackToTasks);
+            Controls.Add(lleveloftasks);
         }
 
         private void SetupLayout()
@@ -244,6 +254,10 @@ namespace ToDo.Forms
             btnlookSubTasks.Click += btnLookSubTasks;
             btnbackToTasks.Click += btnBackToTasks;
             btnApplySort.Click += btnApplySort_Click;
+
+            //настройка двойного клика
+            lvTasks.DoubleClick += btnLookSubTasks;
+        
         }
 
         private void InitializeControls()
@@ -304,6 +318,7 @@ namespace ToDo.Forms
                 var selectedCategory = (SortCategory)(cmbSortType.SelectedIndex - 1);
                 tasks = _sortManager.Sort(tasks, selectedCategory);
             }
+            lleveloftasks.Text = $"Уровень задач: {_taskManager.stacktask.Count + 1}";
 
             DisplayTasks(tasks);
         }
@@ -416,11 +431,6 @@ namespace ToDo.Forms
                 MessageBox.Show($"Ошибка редактирования задачи: {ex.Message}", "Ошибка",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void lvTasks_DoubleClick(object sender, EventArgs e)
-        {
-            btnEditTask_Click(sender, e);
         }
 
         private void btnAddSubtask_Click(object sender, EventArgs e)
